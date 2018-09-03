@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue Code Analysis</title>
+</head>
+<body>
+    <div id="app" style="text-align: center;">
+        <h2>{{title}}</h2>
+        <input v-model="name">
+        <h1>{{name}}</h1>
+        <button v-on:click="clickMe">click me!</button>
+    </div>
+</body>
+<script src="src/scripts/observer.js"></script>
+<script src="src/scripts/watcher.js"></script>
+<script src="src/scripts/compile.js"></script>
+<script src="src/scripts/index.js"></script>
+<script type="text/javascript">
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            title: 'Vue Code Analysis',
+            name: 'Lozoe',
+        },
+        watch: {
+            title: function(val) {
+                alert(val)
+            }
+        },
+        methods: {
+            clickMe: function () {
+                this.title = 'My title clicked';
+            }
+        },
+        mounted: function () {
+            window.setTimeout(() => {
+                this.title = 'title updated timeout 1000';
+            }, 1000);
+        }
+    });
+</script>
+</html>
